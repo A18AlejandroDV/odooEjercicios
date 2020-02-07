@@ -14,6 +14,7 @@ class LibraryBook(models.Model):
     _description = 'Library Book'
 
     name = fields.Char('Title', required=True)
+    member_id = fields.Many2one('library.member', string='Lector')
     date_release = fields.Date('Release Date')
     date_updated = fields.Datetime('Last Updated', copy=False)
     author_ids = fields.Many2many('res.partner', string='Authors')
@@ -46,6 +47,9 @@ class LibraryBook(models.Model):
 
     def make_available(self):
         self.change_state('available')
+
+    def make_unavailable(self):
+        self.change_state('unavailable')
 
     def make_borrowed(self):
         self.change_state('borrowed')
@@ -132,7 +136,6 @@ class LibraryBook(models.Model):
 class LibraryMember(models.Model):
     _name = 'library.member'
     _inherits = {'res.partner': 'partner_id'}
-
     partner_id = fields.Many2one('res.partner', ondelete='cascade')
     date_start = fields.Date('Member Since')
     date_end = fields.Date('Termination Date')
