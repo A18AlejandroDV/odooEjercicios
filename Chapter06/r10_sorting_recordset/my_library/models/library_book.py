@@ -22,6 +22,7 @@ class LibraryBook(models.Model):
     state = fields.Selection([
         ('draft', 'Unavailable'),
         ('available', 'Available'),
+        ('unavailable', 'Unavailable'),
         ('borrowed', 'Borrowed'),
         ('lost', 'Lost')],
         'State', default="draft")
@@ -33,7 +34,9 @@ class LibraryBook(models.Model):
                    ('borrowed', 'available'),
                    ('available', 'lost'),
                    ('borrowed', 'lost'),
-                   ('lost', 'available')]
+                   ('lost', 'available'),
+                   ('available','unavailable'),
+                   ('unavailable','available')]
         return (old_state, new_state) in allowed
 
     @api.multi
