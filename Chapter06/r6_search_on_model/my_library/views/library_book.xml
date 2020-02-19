@@ -35,6 +35,8 @@
                         <field name="category_id"/>
                         <field name="date_release"/>
                         <field name="date_updated"/>
+                    </group>
+                    <group>
                         <field name="is_lent"/>
                     </group>
                     <group>

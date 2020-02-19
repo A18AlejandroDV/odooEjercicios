@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='library_loan_action' model='ir.actions.act_window'>
+        <field name="name">Library Loan</field>
+        <field name="res_model">library.loan</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="My Library" id="library_base_menu" />
+    <menuitem name="Books Loans" id="library_loan_menu" parent="library_base_menu" action="library_loan_action"/>
+
+        <!-- Form View -->
+    <record id="library_loan_view_form" model="ir.ui.view">
+        <field name="name">Library Loan Form</field>
+        <field name="model">library.loan</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="find_book" string="Find Book" type="object"/>
+                </header>
+                <group>
+                    <field name="member_id"/>
+                    <field name="book_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="member_image"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree(list) View -->
+    <record id="library_loan_view_tree" model="ir.ui.view">
+        <field name="name">Library Loan List</field>
+        <field name="model">library.loan</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="member_id"/>
+                    <field name="book_id"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
