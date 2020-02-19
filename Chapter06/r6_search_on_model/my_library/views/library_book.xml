@@ -35,7 +35,14 @@
                         <field name="category_id"/>
                         <field name="date_release"/>
                         <field name="date_updated"/>
+                        <field name="is_lent"/>
                     </group>
+                    <group>
+                        <field name="book_image"/>
+                    </group>
+                </group>
+                <group>
+                    <field name="loan_ids"/>
                 </group>
             </form>
         </field>
